@@ -1,0 +1,50 @@
+---
+import Heading from "../components/Heading.astro";
+import Layout from "../components/Layout.astro";
+import Prose from "../components/Prose.astro";
+---
+
+<Layout title="About — Ben Strong" description="About Ben Strong — software developer in Austin, TX." ogImage={new URL("/og/about.png", Astro.site).href}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Ben Strong",
+    "description": "About Ben Strong — software developer in Austin, TX.",
+    "url": new URL("/about", Astro.site).href,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Ben Strong",
+      "url": Astro.site?.href,
+    },
+  })} />
+  <section class="about">
+    <Heading as="h1">About Me</Heading>
+    <Prose>
+      <p>
+        I'm Ben Strong, a software developer based in Austin, TX. I've spent most of my career 
+        building real-time communication platforms, mobile software, and cloud infrastructure. Most
+        recently I led the engineering team at startup doing AI dubbing of live video streams.
+        Currently taking a break and playing with Claude Code.
+      </p>
+      <p>
+        I got my start in the late '90s building one of the first mobile web browsers: Blazer for PalmOS.
+        It started as a senior project at Stanford and eventually shipped as the default browser on smartphones 
+        from Handspring, Samsung, and Palm. 
+      </p>
+      <p?
+        After that I co-founded SugarSync, one of the first real-time cloud file sync services, and then spent a couple of years at Palm as a Principal Architect on webOS.
+        In 2010 I started vLine, one of the earliest providers of cloud infrastructure for WebRTC applications, then
+        helped design the media infrastructure for a few early-stage startups
+      </p>
+      <p>
+        I studied Computer Science at Stanford. I write code every day and remain hands-on across the stack, from low-level media pipelines in C++ and Rust to cloud infrastructure in AWS and GCP to web and mobile apps.
+      </p>
+    </Prose>
+  </section>
+</Layout>
+
+<style>
+  .about {
+    max-width: var(--width-content);
+  }
+</style>
