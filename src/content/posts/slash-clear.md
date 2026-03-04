@@ -8,7 +8,7 @@ Ahhh, spring is here (it comes early in Texas). The oaks are budding, the wildfl
 
 Once upon a time, I had a blog. Life happened and then Google shut down Blogger. I could probably find it in the wayback machine, but I'm ready to start fresh, anyway. 
 
-My plan is post about the development process as I build some tooling to safely turn an agent loose on my gmail account, which contains about 25 years of email that I'd rather not lose. More details to come as I figure them out.
+My plan is to post about the development process as I build some tooling to safely turn an agent loose on my gmail account, which contains about 25 years of email that I'd rather not lose. More details to come as I figure them out.
 
 A few technical notes on the blog:
 
