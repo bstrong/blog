@@ -5,14 +5,14 @@ Personal blog built with [Astro](https://astro.build) and the [UINUX Blog Theme]
 ## Setup
 
 ```sh
-bun install
-bunx lefthook install
+npm install
+npx lefthook install
 ```
 
 ## Development
 
 ```sh
-bun run dev
+npm run dev
 ```
 
 The site will be available at `http://localhost:4321`.
@@ -21,12 +21,12 @@ The site will be available at `http://localhost:4321`.
 
 | Command | Description |
 |---------|-------------|
-| `bun run dev` | Start dev server |
-| `bun run build` | Build static site to `dist/` |
-| `bun run preview` | Preview the build locally |
-| `bun run lint` | Run Biome linter |
-| `bun run lint:fix` | Run Biome linter with auto-fix |
-| `bun run format` | Format files with Biome |
+| `npm run dev` | Start dev server |
+| `npm run build` | Build static site to `dist/` |
+| `npm run preview` | Preview the build locally |
+| `npm run lint` | Run Biome linter |
+| `npm run lint:fix` | Run Biome linter with auto-fix |
+| `npm run format` | Format files with Biome |
 
 ## Adding a Post
 

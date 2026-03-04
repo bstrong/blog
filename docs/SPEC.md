@@ -12,7 +12,7 @@ A personal blog built with Astro using the UINUX Blog theme. The site is a calm,
 |-------|------|-------|
 | Framework | Astro (static output) | Via UINUX Blog theme |
 | Theme | [Get-UINUX/uinux-blog](https://github.com/Get-UINUX/uinux-blog) | Cloned as project base, not installed as dependency |
-| Package manager | bun | Used for all install/script/CI operations. Not officially tier-1 for Astro; accept compatibility risk. |
+| Package manager | npm | Standard Node.js package manager |
 | Linting/formatting | Biome | Covers .ts, .js, .json. Does not lint inside .astro files. |
 | Git hooks | Lefthook | Pre-commit hook runs Biome check |
 | CI/CD | GitHub Actions + Wrangler | Single workflow: lint, build, deploy |
@@ -164,7 +164,7 @@ Keep the existing RSS feed at `/rss.xml`. Configure with:
 
 **Pre-commit hook:** Runs `biome check --staged` (or equivalent) on staged files only, so commits are fast regardless of project size.
 
-**Installation:** `bun add --dev @biomejs/biome lefthook` then `bunx lefthook install`.
+**Installation:** `npm add --save-dev @biomejs/biome lefthook` then `npx lefthook install`.
 
 ## CI/CD
 
@@ -177,10 +177,10 @@ Keep the existing RSS feed at `/rss.xml`. Configure with:
 **Jobs (sequential steps in one job):**
 
 1. **Checkout** — Clone the repository
-2. **Setup bun** — Install bun (pinned version via `oven-sh/setup-bun`)
-3. **Install dependencies** — `bun install --frozen-lockfile`
-4. **Lint** — `bun run lint` (Biome check). Fails the workflow on lint errors.
-5. **Build** — `bun run build` (Astro static build). Output in `dist/`.
+2. **Setup Node.js** — Install Node.js LTS (via `actions/setup-node`)
+3. **Install dependencies** — `npm ci`
+4. **Lint** — `npm run lint` (Biome check). Fails the workflow on lint errors.
+5. **Build** — `npm run build` (Astro static build). Output in `dist/`.
 6. **Deploy** — `npx wrangler pages deploy dist/ --project-name=<project>` using `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
 
 **Required GitHub Secrets:**
@@ -233,7 +233,7 @@ blog/
 ├── lefthook.yml                    # Git hooks config
 ├── astro.config.mjs                # Astro configuration
 ├── package.json                    # Dependencies and scripts
-├── bun.lockb                       # Bun lockfile
+├── package-lock.json                # npm lockfile
 └── tsconfig.json                   # TypeScript config
 ```
 
@@ -264,9 +264,9 @@ blog/
 | Linter/formatter | Biome | Single tool, fast, minimal config |
 | Lint enforcement | Pre-commit hook + CI | Catches issues locally and enforces remotely |
 | Git hooks | Lefthook | Single binary, bun-friendly, simple YAML config |
-| Deploy method | GitHub Actions + Wrangler | Full control over bun build environment |
+| Deploy method | GitHub Actions + Wrangler | Full control over build environment |
 | Deploy trigger | Push to main | Simple; single committer doesn't need PR previews |
-| OG images | astro-og-canvas | Astro-native, no sharp dependency, bun-compatible |
+| OG images | astro-og-canvas | Astro-native, no sharp dependency |
 | RSS | Kept | Free at build time; meaningful distribution channel |
 | Analytics | Cloudflare Web Analytics | Already in CF ecosystem; no JS snippet; privacy-respecting |
-| Package manager | Bun everywhere | Accepted compatibility risk with Astro |
+| Package manager | npm | Standard Node.js toolchain; no compatibility risk |
